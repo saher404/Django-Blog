@@ -13,3 +13,9 @@
 
 ![image](https://user-images.githubusercontent.com/59269520/120791124-5e0a4700-c566-11eb-863a-fd9be0f02683.png)
 
+本项目的主要结构如下：
+
+![image](https://user-images.githubusercontent.com/59269520/120792840-b3dfee80-c568-11eb-82ea-3bab74c07549.png)
+
+其中，APP blog是整个网站的主要app，与个人网站有关的主要代码都在blog中。
+APP wechat是微信公众号机器人的APP。
