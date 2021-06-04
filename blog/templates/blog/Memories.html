@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="/static/css/bubbles.css" type="text/css" />
+    <style type="text/css">
+        body {
+            background: #75b9f8;
+            background: -webkit-linear-gradient(top left, #75b9f8 0%, #75b9f8 100%);
+            background: linear-gradient(to bottom right, #75b9f8 0%, #75b9f8 100%);
+        }
+
+        @-webkit-keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1
+            }
+
+            75% {
+                opacity: 1;
+            }
+        }
+
+        .anim_fade_image {
+            margin-left: 20px;
+            margin-top: 40px;
+            position: absolute;
+            -webkit-animation-name: fadeInOut;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-duration: 12s;
+            -webkit-animation-direction: alternate;
+        }
+        .img1{
+            margin-left: 650px;
+            margin-top: 80px;
+            position: absolute;
+            -webkit-animation-name: fadeInOut;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-duration: 12s;
+            -webkit-animation-direction: alternate;
+
+        }
+    </style>
+</head>
+
+<body>
+    <img src="/static/img/good.png" class="anim_fade_image" />
+
+    <img src="/static/img/xx.png" class="img1" />
+
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    </div>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/js/jquery.fullPage.min.js"></script>
+    <!-- <script src="../js/auto-play.js"></script> -->
+    <script src="/static/js/memories.js"></script>
+</body>
+
+</html>

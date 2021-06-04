@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <!-- 原始地址：//webapi.amap.com/ui/1.1/ui/misc/PathSimplifier/examples/expand-path.html -->
+    <base href="//webapi.amap.com/ui/1.1/ui/misc/PathSimplifier/examples/"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>动态延展路径</title>
+    <style>
+    html,
+    body,
+    #container {
+        width: 93%;
+        height: 100%;
+        margin: 0px;
+    }
+
+
+    </style>
+</head>
+
+<body bgcolor="black">
+<div id="container"></div>
+<script type="text/javascript" src='//webapi.amap.com/maps?v=2.0&key=656b6dbf2637e2f33428e06246b2e0e2'></script>
+<!-- UI组件库 1.0 -->
+<script src="//webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+
+<div style="font-size:20px;position:absolute;left:1240px;top:500px;color:#FFFFFF">
+    当前经度为：
+    <input type="text" draggable="true" style="width:80px; background-color:#DFFFDF;margin-right:10px" id="count1"/>
+</div>
+<div style="font-size:20px;position:absolute;left:1240px;top:600px;color:#FFFFFF">
+    当前纬度为：
+    <input type="text" draggable="true" style="width:80px; background-color:#DFFFDF;margin-right:10px" id="count2"/>
+</div>
+<div style="font-size:16px;position:absolute;left:1240px;top:250px;color:#FFFFFF">
+    单位时间Blinks次数：
+    <input type="text" draggable="true" style="width:80px; background-color:#DFFFDF;margin-right:10px" id="count3"/>
+</div>
+<div style="font-size:16px;position:absolute;left:1240px;top:320px;color:#FFFFFF">
+    单位时间Yawning次数：
+    <input type="text" draggable="true" style="width:80px; background-color:#DFFFDF;margin-right:10px" id="count4"/>
+</div>
+<div style="font-size:20px;position:absolute;left:1240px;top:400px;color:#FFFFFF">
+    疲劳程度：
+    <input type="text" draggable="true" style="width:80px; background-color:#DFFFDF;margin-right:10px" id="count5"/>
+</div>
+<div style="font-size:20px;position:absolute;left:1240px;top:50px;color:#FFFFFF">
+    系统工作状态:
+</div>
+<div style="font-size:20px;position:absolute;left:1380px;top:50px;color:#00FF00">
+    | 正在工作 |
+</div>
+<div style="font-size:20px;position:absolute;left:1240px;top:150px;color:#FFFFFF">
+    GPS信号强度:
+</div>
+<div style="font-size:20px;position:absolute;left:1380px;top:150px;color:#FFFF00">
+    | 一般 |
+</div>
+<script type="text/javascript">
+    //创建地图
+    var map = new AMap.Map('container', {
+        zoom: 4
+    });
+
+    AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) {
+
+        if (!PathSimplifier.supportCanvas) {
+            alert('当前环境不支持 Canvas！');
+            return;
+        }
+
+        var pathSimplifierIns = new PathSimplifier({
+            zIndex: 100,
+            autoSetFitView: false,
+            map: map, //所属的地图实例
+
+            getPath: function(pathData, pathIndex) {
+
+                return pathData.path;
+            },
+            getHoverTitle: function(pathData, pathIndex, pointIndex) {
+
+                if (pointIndex >= 0) {
+                    //point
+                    return pathData.name + '，点：' + pointIndex + '/' + pathData.path.length;
+                }
+
+                return pathData.name + '，点数量' + pathData.path.length;
+            },
+            renderOptions: {
+
+                renderAllPointsIfNumberBelow: -1 //绘制路线节点，如不需要可设置为-1
+            }
+        });
+
+        window.pathSimplifierIns = pathSimplifierIns;
+
+        var myPath = [
+                [110.332795,25.279598],
+                [110.323911,25.278899],
+                [110.324555,25.269547],
+                [110.318719,25.260931],
+                [110.310586,25.259728],
+                [110.301746,25.259767],
+                [110.283936,25.259689],
+                [110.288356,25.268771],
+                [110.295265,25.276222],
+                [110.299214,25.287126]
+            ],
+            endIdx = 0,
+            data = [{
+                name: '动态路线',
+                path: myPath.slice(0, 1)
+            }];
+
+        pathSimplifierIns.setData(data);
+
+        //对第一条线路（即索引 0）创建一个巡航器
+        var navg1 = pathSimplifierIns.createPathNavigator(0, {
+            loop: true, //循环播放
+            speed: 30 //巡航速度，单位千米/小时
+        });
+
+        function expandPath() {
+
+            function doExpand() {
+
+                endIdx++;
+
+                if (endIdx >= myPath.length) {
+                    return false;
+                }
+
+                var cursor = navg1.getCursor().clone(), //保存巡航器的位置
+                    status = navg1.getNaviStatus();
+
+
+                data[0].path = myPath.slice(0, endIdx + 1);
+                pathSimplifierIns.setData(data); //延展路径
+
+
+                //重新建立一个巡航器
+                navg1 = pathSimplifierIns.createPathNavigator(0, {
+                    //loop: true, //循环播放
+                    speed: 30 //巡航速度，单位千米/小时
+                });
+
+                if (status !== 'stop') {
+                    navg1.start();
+                }
+
+                //恢复巡航器的位置
+                if (cursor.idx >= 0) {
+                    navg1.moveToPoint(cursor.idx, cursor.tail);
+                }
+
+                return true;
+            }
+
+            if (doExpand()) {
+
+                setTimeout(expandPath, 1000);
+            }
+        }
+
+
+        navg1.start();
+
+        expandPath();
+    });
+
+
+</script>
+<script type="text/javascript">
+function accSub(arg1, arg2) {
+    var r1, r2, m, n;
+    try {
+        r1 = arg1.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r1 = 0;
+    }
+    try {
+        r2 = arg2.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r2 = 0;
+    }
+    m = Math.pow(10, Math.max(r1, r2)); //last modify by deeka //动态控制精度长度
+    n = (r1 >= r2) ? r1 : r2;
+    return ((arg1 * m - arg2 * m) / m).toFixed(n);
+}
+
+    setInterval(function(){
+        var num1= parseInt(document.getElementById('count1').value);
+        document.getElementById('count1').value=accSub(num1,0.121);
+    },8000);
+    setInterval(function(){
+        var num1= parseInt(document.getElementById('count2').value);
+        document.getElementById('count2').value=accSub(num1,0.121);
+    },8000);
+
+    document.getElementById('count1').value=110.332387;
+    document.getElementById('count2').value=25.279565;
+
+    setInterval(function(){
+        var num1= parseInt(document.getElementById('count3').value);
+        document.getElementById('count3').value=num1+1;
+    },4000);
+    document.getElementById('count3').value=0;
+
+    setInterval(function(){
+        var num1= parseInt(document.getElementById('count4').value);
+        document.getElementById('count4').value=num1+1;
+    },10000);
+    document.getElementById('count4').value=0;
+
+    setInterval(function(){
+        var num1= parseInt(document.getElementById('count5').value);
+        document.getElementById('count5').value='轻度疲劳';
+    },20000);
+    document.getElementById('count5').value='正常';
+
+</script>
+</body>
+
+</html>

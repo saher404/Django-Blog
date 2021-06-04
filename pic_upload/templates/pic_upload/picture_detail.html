@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    {% block content %}
+    <h3>{{ picture.title }}</h3>
+
+    {% if picture.image %}
+    <p><img src="{{ picture.image.url }}" /></p>
+    {% endif %}
+
+    <p>上传日期: {{ picture.date | date:"Y-m-j" }} </p>
+    <p><a href="{% url 'pic_upload:pic_list' %}">查看所有图片</a> |    <a href="{% url 'pic_upload:pic_upload' %}">上传新图片</a></p>
+    {% endblock %}
+    <a href="{% url 'pic_upload:del' picture.id %}">删除图片</a>
+    <a href="{% url 'index' %}">返回主页</a>
+</body>
+
+</html>

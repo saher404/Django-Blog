@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="cn" dir="ltr" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>文章 </title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+    <link href="/static/css/nprogress.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/nivo-slider.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/static/css/default.css" type="text/css" media="screen"/>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.nivo.slider.pack.js"></script>
+    <script src="/static/js/nprogress.js"></script>
+    <style type="text/css">
+        body {
+            background-image: url(/static/bf1.jpg);
+            /*设置网页的背景图片*/
+            background-repeat: no-repeat;
+            /*设置背景图像平铺*/
+            background-position: -110px -100px;
+            /*用像素值控制背景图像的位置*/
+            background-attachment: fixed;
+            /*设置背景图像的位置固定*/
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+<form action="{% url 'blog:edit_action' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="article_id" value="{{ article.id | default:'0' }}"/>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                    <span class="icon-bar">
+                        </span>
+                    <span class="icon-bar">
+                        </span>
+                    <span class="icon-bar">
+                        </span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav header-menu">
+                    <li>
+                        <a href="{% url 'index'  %}">
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'blog:regist'  %}">
+                            注册
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'blog:edit_page' 0 %}">
+                            新文章
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'blog:vlogin' %}">
+                            图片专区
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            链接
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            联系
+                        </a>
+                    </li>
+                    <li>
+                        <a href="help.html">
+                            帮助
+                        </a>
+                    </li>
+                    <li>
+                        {% if user.is_authenticated %}
+                        <div class='login_btn fl' style="color:rgb(5, 5, 5);font-size:35px;">
+                            欢迎您：<em style="color:rgb(5, 5, 5);font-size:35px;">{{ user.username }}</em>
+                            <span>|</span>
+                            <a href="{% url 'blog:logout' %}">退出</a>
+                        </div>
+                        {% else %}
+                        <div class='login_btn fl'>
+                            <a href="{% url 'blog:login' %}">登录</a>
+                            <span>|</span>
+                            <a href="{% url 'blog:regist' %}">注册</a>
+                        </div>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="leftbar">
+        <!-- 左菜单 -->
+        <div class="left_menu">
+            <ul class="menu_link">
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-toggle="tooltip"
+                       data-placement="right" title="登陆">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li data-toggle="tooltip" data-placement="right" title="博客">
+                    <a href="{% url 'blog:regist'  %}" class="simptip-position-right simptip-smooth simptip-movable"
+                       target="_black">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                注册
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                        <img src="/static/tx1.jpg">
+                        <span>
+                                自定义链接
+                            </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Start banner img-->
+    <div class="container-filed" id="banner_container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="slider-wrapper theme-default">
+                    <div id="slider" class="nivoSlider">
+                        <img src="/static/kj1.jpg" data-thumb="/static/kj1.jpg" alt=""/>
+                        <a href="/static/kj2.jpg"><img src="/static/kj2.jpg" alt=""/></a>
+                        <img src="/static/kj1.jpg" data-thumb="/static/kj1.jpg" alt=""/>
+                        <img src="/static/kj2.jpg" data-thumb="/static/kj2.jpg" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End banner img-->
+    <div class="container-fluid main-container" id="main-container">
+        <div class="row top-title">
+            <div class="col-md-12">
+                <h1 class="page-title right">
+                    <a href="{% url 'blog:blog'  %}">博客</a> >> <a href="">文章</a>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 post-container">
+                <h2 class="post-title">
+                    文章标题
+                    <input type="text" name="title" value="{{ article.title }}" style="width:400px;height:40px"/>
+                </h2>
+                <div class="meta-box">
+                </div>
+                <div class="post-content">
+                    <hr/>
+                    <section>
+                        <div class="main-container">
+                            <div class="row">
+                                <p>
+                                    文章内容
+                                    <textarea name="content" value="{{ article.content }}"
+                                              style="OVERFLOW:   visible"
+                                              cols="70" rows="12">
+                                        {{ article.content|safe }}
+                                    </textarea>
+                                </p>
+                                <div>
+                                    <!--                                    {{ content_form.media }}-->
+                                    <!--                                    {{ content_form.content }}-->
+                                </div>
+
+                            </div>
+                            <br/>
+                            <input type="submit" value="OK"/>
+                        </div>
+                    </section>
+                    <div class="meta-box">
+                    </div>
+                    {% if article.id %}
+                    <a href="{% url 'blog:aimg' article.id %}">选择标题图</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <footer class="col-md-8 post-container">
+            <div class="copyright">
+                <a style="font-size:20px;">©2020 Saher</a> <a href="http://www.beian.miit.gov.cn/"
+                                                              style="font-size:20px;">桂ICP备20004216号</a>
+            </div>
+        </footer>
+    </div>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script>
+            /*banner 初始化*/
+            $(window).load(function() {
+                $('#slider').nivoSlider({
+                    effect: 'random', // 过渡效果
+                    controlNav: false, // 是否显示图片导航控制按钮（,2,3... ）
+                    pauseOnHover: true, // 鼠标县浮时是否停止动画
+                    manualAdvance: false, // 是否手动切换 
+                    animSpeed: 100, // 图片过渡时间   
+                    pauseTime: 2000, // 图片显示时间
+                    pauseOnHover: false,
+                    manualAdvance: false,
+                });
+            });
+            $(document).ready(function() {
+                $('body').show();
+                $('.version').text(NProgress.version);
+                NProgress.start();
+                setTimeout(function() {
+                    NProgress.done();
+                    $('.fade').removeClass('out');
+                }, 1000);
+            })
+
+
+
+
+
+
+
+    </script>
+</form>
+</body>
+
+</html>

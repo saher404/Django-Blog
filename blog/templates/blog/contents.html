@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>拆腻子的博客 </title>
+
+<body>
+    {% if user.is_authenticated %}
+    <div class='login_btn fl' style="color:rgb(2, 2, 2);font-size:35px;">
+        欢迎您：<em style="color:rgb(2, 2, 2);font-size:50px;">{{ user.username }}</em>
+        <span>|</span>
+        <a href="{% url 'blog:logout' %}">退出</a>
+    </div>
+    {% else %}
+    <div class='login_btn fl'>
+        <a href="{% url 'blog:login' %}">登录</a>
+        <span>|</span>
+        <a href="{% url 'blog:regist' %}">注册</a>
+    </div>
+    {% endif %}
+    <div class="leftbar">
+        <!-- 左菜单 -->
+        <div class="left_menu">
+            <ul class="menu_link">
+                <li>
+                    <a href="{% url 'blog:edit_page' 0 %}" class="simptip-position-right simptip-smooth simptip-movable"
+                        data-toggle="tooltip" data-placement="right" title="新文章" style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            新文章
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li data-toggle="tooltip" data-placement="right" title="博客">
+                    <a href="{% url 'blog:login'  %}" class="simptip-position-right simptip-smooth simptip-movable"
+                        target="_black" style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            登录
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:vlogin' %}" class="simptip-position-right simptip-smooth simptip-movable"
+                        style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            图片专区
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接"
+                        style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            自定义链接
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接"
+                        style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            自定义链接
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接"
+                        style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            自定义链接
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接"
+                        style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            自定义链接
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接"
+                        style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            自定义链接
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接"
+                        style="color:rgb(2, 2, 2);font-size:35px;">
+                        <img src="/static/tx1.jpg" width="60" height="60" />
+                        <span>
+                            自定义链接
+                        </span>
+                        <div class="clearfix">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</head>
+
+</html>

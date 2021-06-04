@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="cn" dir="ltr" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>文章 </title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+    <link href="/static/css/nprogress.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/nivo-slider.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/static/css/default.css" type="text/css" media="screen"/>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.nivo.slider.pack.js"></script>
+    <script src="/static/js/nprogress.js"></script>
+    <style type="text/css">
+        body {
+            background-image: url(/static/bf1.jpg);
+            /*设置网页的背景图片*/
+            background-repeat: no-repeat;
+            /*设置背景图像平铺*/
+            background-position: -110px -100px;
+            /*用像素值控制背景图像的位置*/
+            background-attachment: fixed;
+            /*设置背景图像的位置固定*/
+        }
+                .round_icon{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+{% load comments %}
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">
+                        Toggle navigation
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav header-menu">
+                <li>
+                    <a href="{% url 'index'  %}">
+                        首页
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:regist'  %}">
+                        注册
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:edit_page' 0 %}">
+                        新文章
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:vlogin' %}">
+                        图片专区
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        链接
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html">
+                        联系
+                    </a>
+                </li>
+                <li>
+                    <a href="help.html">
+                        帮助
+                    </a>
+                </li>
+                <li>
+                    {% if user.is_authenticated %}
+                    <div class='login_btn fl' style="color:rgb(5, 5, 5);font-size:35px;">
+                        欢迎您：<em style="color:rgb(5, 5, 5);font-size:35px;">{{ user.username }}</em>
+                        <span>|</span>
+                        <a href="{% url 'blog:logout' %}">退出</a>
+                    </div>
+                    {% else %}
+                    <div class='login_btn fl'>
+                        <a href="{% url 'blog:login' %}">登录</a>
+                        <span>|</span>
+                        <a href="{% url 'blog:regist' %}">注册</a>
+                    </div>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="leftbar">
+    <!-- 左菜单 -->
+    <div class="left_menu">
+        <ul class="menu_link">
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-toggle="tooltip"
+                   data-placement="right" title="登陆">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li data-toggle="tooltip" data-placement="right" title="博客">
+                <a href="{% url 'blog:regist'  %}" class="simptip-position-right simptip-smooth simptip-movable"
+                   target="_black">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            注册
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--Start banner img-->
+<div class="container-filed" id="banner_container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="slider-wrapper theme-default">
+                <div id="slider" class="nivoSlider">
+                    <img src="/static/kj1.jpg" data-thumb="/static/kj1.jpg" alt=""/>
+                    <a href="/static/kj2.jpg"><img src="/static/kj2.jpg" alt=""/></a>
+                    <img src="/static/kj1.jpg" data-thumb="/static/kj1.jpg" alt=""/>
+                    <img src="/static/kj2.jpg" data-thumb="/static/kj2.jpg" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End banner img-->
+<div class="container-fluid main-container" id="main-container">
+    <div class="row top-title">
+        <div class="col-md-12">
+            <h1 class="page-title right">
+                <a href="{% url 'blog:blog'  %}">博客</a> >> <a href="">文章</a>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h2 class="post-title">
+                <a href="" tppabs="" rel="bookmark">
+                    标题： {{ article.title }}
+                </a>
+                <a>浏览：{{ article.views }}</a>
+                <br/>
+                {% if article.author_id %}
+                <a href="{% url 'blog:space' article.author_id %}">作者：{{ article.author }}</a>
+                {% else %}
+                <a>作者：{{ article.author }}</a>
+                {% endif %}
+            </h2>
+            <div>
+                {% if profile.avatar %}
+                <img src="/static{{ profile.avatar.url }}"
+                     width="80px" height="80px"
+                     class="round_icon">
+                {% else %}
+                {% endif %}
+            </div>
+            <p style="font-size:10px">{{ article.name }}</p>
+            <img width="50%" height="50%" src="/static/media/{{ article.articleimg }}">
+            <div class="meta-box">
+            </div>
+            <div class="post-content">
+                <hr/>
+                <section>
+                    <div class="main-container">
+                        <div class="row">
+                            <p>
+                                {{ article.content|safe }}
+                            </p>
+                        </div>
+                        <hr/>
+                        <a href="{% url 'blog:edit_page' article.id %}">修改文章</a>
+                        <a href="{% url 'blog:article_delete' article.id %}">删除文章</a>
+                        <br/>
+                        <a>文章创建时间：{{ article.created }}</a>
+                        <br/>
+                        <a>文章最后更新时间：{{ article.pub_time }}</a>
+                    </div>
+                </section>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>评论列表</h4>
+                </div>
+                <div class="panel-body">
+                    {% get_comment_list for article as comments %} {% for comment in comments %}
+                    <div class="blog_comment" name="F{{comment.id}}">
+                        <p class="comment_title">
+                            #{{ comment.submit_date|date:"Y-m-d H:i"}} @ {{ comment.user_name }}：
+                        </p>
+                        <p class="comment_content">{{ comment.comment }}</p>
+                    </div>
+                    {% empty %}
+                    <span>暂无评论</span> {% endfor %}
+                </div>
+            </div>
+            <h4>新的评论</h4>
+            {% get_comment_form for article as blog_form %}
+
+            <form id="comment_form" class="form-horizontal" action="{% comment_form_target %}" method="post">
+                {% csrf_token %} {# 必须的字段 #} {{ blog_form.object_pk }}
+                {{ blog_form.content_type }} {{ blog_form.timestamp }} {{ blog_form.site }}
+                {{ blog_form.submit_date }} {{ blog_form.security_hash }} {# 用户名字段，这个后面会修改为登录用户评论，无需填这个 #}
+                <div class="control-group">
+                    <label class="control-label" for="id_name">名称： </label>
+                    <div class="controls">
+                        <input type="text" id="id_name" class="input-xlarge" name="name" placeholder="请输入您的用户名"
+                               value="{{ user.username }}"/>
+                    </div>
+                </div>
+
+                {# 邮箱地址字段 #}
+                <div class="control-group">
+                    <label class="control-label" for="id_email">邮箱： </label>
+                    <div class="controls">
+                        <input type="email" id="id_email" class="input-xlarge" name="email" placeholder="请输入您的邮箱地址"
+                               value="{{ user.email }}" required/>
+                    </div>
+                </div>
+
+                {# 评论内容 #}
+                <a name="newcomment" id="newcomment"></a>
+                <div class="control-group">
+                    <label class="control-label" for="id_comment">评论： </label>
+                    <div class="controls">
+                            <textarea rows="6" id="id_comment" class="input-xlarge comment" name="comment"
+                                      placeholder="请输入评论内容">
+                            </textarea>
+                    </div>
+                </div>
+
+                {# 防垃圾评论 #}
+                <p style="display:none;">
+                    <label for="id_honeypot">如果你在该字段中输入任何内容，你的评论就会被视为垃圾评论。</label>
+                    <input type="text" name="honeypot" id="id_honeypot">
+                </p>
+
+                {# 表单按钮 #}
+                <div class="controls">
+                    <div class="form-actions">
+                        <input class="btn btn-info" id="submit_btn" type="submit" name="submit" value="提交"/>
+                        <input type="hidden" name="next" value="{% url 'blog:article_page' article.id %}"/>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <footer class="col-md-8 post-container">
+        <div class="copyright">
+            <a style="font-size:20px;">©2020 Saher</a> <a href="http://www.beian.miit.gov.cn/" style="font-size:20px;">桂ICP备20004216号</a>
+        </div>
+    </footer>
+</div>
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+        /*banner 初始化*/
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                effect: 'random', // 过渡效果
+                controlNav: false, // 是否显示图片导航控制按钮（,2,3... ）
+                pauseOnHover: true, // 鼠标县浮时是否停止动画
+                manualAdvance: false, // 是否手动切换 
+                animSpeed: 100, // 图片过渡时间   
+                pauseTime: 2000, // 图片显示时间
+                pauseOnHover: false,
+                manualAdvance: false,
+            });
+        });
+        $(document).ready(function() {
+            $('body').show();
+            $('.version').text(NProgress.version);
+            NProgress.start();
+            setTimeout(function() {
+                NProgress.done();
+                $('.fade').removeClass('out');
+            }, 1000);
+        })
+
+
+
+</script>
+</body>
+
+</html>

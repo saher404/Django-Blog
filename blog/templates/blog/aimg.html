@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <title>Add</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<h1>选择标题图</h1>
+<br/>
+<h6>（如果文件太大，点击确定后可能需要等待几十秒页面才会跳转哦）</h6>
+<form method="post" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{ af.as_p }}
+    <input type="submit" value="OK"/>
+</form>
+</body>
+</html>

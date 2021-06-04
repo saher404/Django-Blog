@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript"></script>
+</head>
+<body>
+{% block title %} 用户信息 {% endblock title %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <div class="col-md-4">用户名: {{ user.username }}</div>
+            {% if profile.avatar %}
+            <div class="col-md-4">头像</div>
+            <img src="/static{{ profile.avatar.url }}" style="max-width: 20%; border-radius: 15%;" class="col-md-4">
+            {% else %}
+            <h5 class="col-md-4">暂无头像</h5>
+            {% endif %}
+            <br>
+            <br>
+            <form method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- tx -->
+                <div class="form-group">
+                    <label for="avatar">上传头像（建议上传正方形的图片，记得点保存修改）</label>
+                    <input type="file" class="form-control-file" name="avatar" id="avatar">
+                </div>
+                <!-- bio -->
+                <div class="form-group col-md-4">
+                    <label for="bio">简介</label>
+                    <textarea type="text" class="form-control" id="bio" name="bio"
+                              rows="12">{{ profile.bio }}</textarea>
+                </div>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary">保存修改</button>
+                <a href="{% url 'index' %}">返回主页</a>
+                <div>
+                    <a>我发表的文章：</a>
+                    <br/>
+                    {% for article in articles %}
+                    <ul>
+                        <li>
+                            <a href="{% url 'blog:article_page' article.id %}"
+                               style="color:rgb(5, 5, 5);font: size 20px;">{{ article.title }}</a>
+                            <br/>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	<form action="/register" >
+		 <table width="100%" background="/static/images/20.jpg" style="background-size: 100% 100%;">
+			 <!-- 注册部分 -->
+			 <tr>
+				 <td background="/static/image/regist_bg.jpg" height="800px">
+					<!-- <table border="5px" width="60%" height="80%" align="center" bgcolor="white" style=""> -->
+					<table cellspacing="10" style="height:300px;width: 300px;position:absolute ;top:60% ;left:80% ; transform: translate(-50%,-50%) " bgcolor="white">
+						
+						 <tr>
+							 <td>
+								 <table width="90%" height="80%" align="center">
+									 <tr>
+										 <td colspan="2">
+											 <font color="skyblue" size="3">患者注册</font> USER REGISTER
+										 </td>
+										 
+									 </tr>
+									 <tr>
+										 <td><font size="2">用户名</font></td>
+										 <td>
+											 <input type="text" name="username" size="10px" placeholder="请输入用户名"><br/>
+										 </td>
+									 </tr>
+									 <tr>
+										 <td><font size="2">密码</font></td>
+										 <td>
+											 <input type="password" name="password" size="10px" placeholder="请输入密码" />
+										 </td>
+									 </tr>
+									 <tr>
+										 <td><font size="2">电话</font></td>
+										 <td>
+											 <input type="text" name="tel" size="10px" placeholder="请输入电话号码" />
+										 </td>
+									 </tr>
+									 <tr>
+										 <td><font size="2">性别</font></td>
+										 <td>
+											 <input size="10px" type="text" name="gender"/>
+										 </td>
+									 </tr>
+									 <tr>
+										 <td><font size="2">出生日期</font></td>
+										 <td>
+											 <input size="10px" type="date" />
+										 </td>
+									 </tr>
+									 <tr>
+									 	<td></td>
+									 	<td>
+											<a href="{% url 'qkl:index' %}" > 注册 </a>
+									 	</td>
+									 </tr>
+
+									 
+								 </table>
+								 
+							 </td>
+						 </tr>
+					 </table>
+					 
+					 
+				 </td>
+				 
+				 
+			 </tr>
+			
+		 </table>
+	   </form>
+	</body>
+</html>

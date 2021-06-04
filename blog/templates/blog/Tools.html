@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="cn" dir="ltr" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>拆腻子的博客 </title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+    <link href="/static/css/nprogress.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/nivo-slider.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/static/css/default.css" type="text/css" media="screen"/>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.nivo.slider.pack.js"></script>
+    <script src="/static/js/nprogress.js"></script>
+    <style type="text/css">
+        body {
+            background-image: url(/static/bf1.jpg);
+            /*设置网页的背景图片*/
+            background-repeat: no-repeat;
+            /*设置背景图像平铺*/
+            background-position: -110px -100px;
+            /*用像素值控制背景图像的位置*/
+            background-attachment: fixed;
+            /*设置背景图像的位置固定*/
+        }
+
+
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">
+                        Toggle navigation
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav header-menu">
+                <li>
+                    <a href="{% url 'index'  %}">
+                        首页
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:regist'  %}">
+                        注册
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:edit_page' 0 %}">
+                        新文章
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:vlogin' %}">
+                        图片专区
+                    </a>
+                </li>
+                <li>
+                    <a href="http://118.31.175.222:5000/">
+                        Saher云盘
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html">
+                        联系
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:video' %}">
+                        奇怪的地方
+                    </a>
+                </li>
+                <li>
+                    {% if user.is_authenticated %}
+                    <div class='login_btn fl' style="color:rgb(5, 5, 5);font-size:35px;">
+                        欢迎您：<em style="color:rgb(5, 5, 5);font-size:35px;">{{ user.username }}</em>
+                        <span>|</span>
+                        <a href="{% url 'blog:logout' %}">退出</a>
+                    </div>
+                    {% else %}
+                    <div class='login_btn fl'>
+                        <a href="{% url 'blog:login' %}">登录</a>
+                        <span>|</span>
+                        <a href="{% url 'blog:regist' %}">注册</a>
+                    </div>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="leftbar">
+    <!-- 左菜单 -->
+    <div class="left_menu">
+        <ul class="menu_link">
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-toggle="tooltip"
+                   data-placement="right" title="登陆">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li data-toggle="tooltip" data-placement="right" title="博客">
+                <a href="{% url 'blog:regist'  %}" class="simptip-position-right simptip-smooth simptip-movable"
+                   target="_black">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            注册
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--Start banner img-->
+<div class="container-filed" id="banner_container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="slider-wrapper theme-default">
+                <div id="slider" class="nivoSlider">
+                    <img src="/static/kj1.jpg" data-thumb="/static/kj1.jpg" alt=""/>
+                    <a href="/static/kj2.jpg"><img src="/static/kj2.jpg" alt=""/></a>
+                    <img src="/static/kj1.jpg" data-thumb="/static/kj1.jpg" alt=""/>
+                    <img src="/static/kj2.jpg" data-thumb="/static/kj2.jpg" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End banner img-->
+<!--主要内容 -->
+<div class="container-fluid main-container" id="main-container">
+    <div class="row top-title">
+        <div class="col-md-12">
+            <h1 class="page-title">
+                实用小程序/工具专栏
+            </h1>
+        </div>
+    </div>
+    <!--main Start-->
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h2 class="post-title">
+                <a title="">写在前面</a>
+            </h2>
+            <div class="meta-box">
+                    <span class="m-post-date">
+                        <i class="fa fa-calendar-o">
+                        </i>
+                        2020年4月22日
+                    </span>
+                <span class="comments-link">
+                        <a href="" class="ds-thread-count" data-thread-key="9500" title="fuck">
+                            <i class="fa fa-comments-o">
+                            </i>
+                            留言
+                        </a>
+                    </span>
+            </div>
+            <div class="post-content">
+                <p>
+                    这里的实用小程序/工具有些是转载其他大佬作者的，有的是我自己做的。在每个小程序/工具的开头我会加以注释的。
+                </p>
+            </div>
+            <div class="meta-box">
+                    <span class="cat-links">
+                        <i class="fa fa-navicon">
+                        </i>
+                        <b>
+                            分类:
+                        </b>
+                        <a href="">
+                            测试
+                        </a>
+                    </span>
+                <span class="tag-links">
+                        <i class="fa fa-tags">
+                        </i>
+                        <b>
+                            标签:
+                        </b>
+                        <a href="" rel="tag">
+                            司马
+                        </a>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h2 class="post-title">
+                <a href="https://mp.weixin.qq.com/s/KnG-mncegaB35v5THAUJXQ" title="">【转载】【Python】利用邮件远程控制自己电脑</a>
+            </h2>
+            <div class="meta-box">
+                    <span class="m-post-date">
+                        <i class="fa fa-calendar-o">
+                        </i>
+                        2020年4月22日
+                    </span>
+                <span class="comments-link">
+                        <a href="" class="ds-thread-count" data-thread-key="9500" title="fuck">
+                            <i class="fa fa-comments-o">
+                            </i>
+                            留言
+                        </a>
+                    </span>
+            </div>
+            <div class="post-content">
+                <p>
+                    这是一个国内大佬做的小程序，可以用邮件直接控制电脑的某些功能。目前有手机端和PC端，反正我感觉是挺NB的啊，具体请戳标题链接。记得请资瓷原作者，我只是一个搬运工而已。
+                </p>
+                <img src="/static/Tools/E-mail.png"/>
+                <img src="/static/Tools/E-mail1.png" width="1000" height="450"/>
+                <a href="/static/Tools/Email.rar">下载链接</a>
+            </div>
+            <div class="meta-box">
+                    <span class="cat-links">
+                        <i class="fa fa-navicon">
+                        </i>
+                        <b>
+                            分类:
+                        </b>
+                        <a href="">
+                            测试
+                        </a>
+                    </span>
+                <span class="tag-links">
+                        <i class="fa fa-tags">
+                        </i>
+                        <b>
+                            标签:
+                        </b>
+                        <a href="" rel="tag">
+                            撤烁
+                        </a>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h2 class="post-title">
+                <a href="{% url 'blog:qr'  %}" title="">【自制】在线二维码转换器</a>
+            </h2>
+            <div class="meta-box">
+                    <span class="m-post-date">
+                        <i class="fa fa-calendar-o">
+                        </i>
+                        2020年5月12日
+                    </span>
+                <span class="comments-link">
+                        <a href="" class="ds-thread-count" data-thread-key="9500" title="fuck">
+                            <i class="fa fa-comments-o">
+                            </i>
+                            留言
+                        </a>
+                    </span>
+            </div>
+            <div class="post-content">
+                <p>
+                    rt，你可以试试看把任何网址转换成二维码
+                </p>
+            </div>
+            <div class="meta-box">
+                    <span class="cat-links">
+                        <i class="fa fa-navicon">
+                        </i>
+                        <b>
+                            分类:
+                        </b>
+                        <a href="">
+                            测试
+                        </a>
+                    </span>
+                <span class="tag-links">
+                        <i class="fa fa-tags">
+                        </i>
+                        <b>
+                            标签:
+                        </b>
+                        <a href="" rel="tag">
+                            撤烁
+                        </a>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h2 class="post-title">
+                <a href="https://mp.weixin.qq.com/s/1xXULpT36P7LTO5HDbjptg" title="">【转载】python坦克大战小游戏</a>
+            </h2>
+            <div class="meta-box">
+                    <span class="m-post-date">
+                        <i class="fa fa-calendar-o">
+                        </i>
+                        2020年5月13日
+                    </span>
+                <span class="comments-link">
+                        <a href="" class="ds-thread-count" data-thread-key="9500" title="fuck">
+                            <i class="fa fa-comments-o">
+                            </i>
+                            留言
+                        </a>
+                    </span>
+            </div>
+            <div class="post-content">
+                <p>
+                    rt，这是转载的文章，请多多支持原作者。源码下载链接已经推出。
+                    <img src="/static/Tools/tank.png"/>
+                    <img src="/static/Tools/tank2.png"/>
+                    <br/>
+                    <a href="/static/Tools/Game5(py).rar">下载链接</a>
+                </p>
+            </div>
+            <div class="meta-box">
+                    <span class="cat-links">
+                        <i class="fa fa-navicon">
+                        </i>
+                        <b>
+                            分类:
+                        </b>
+                        <a href="">
+                            测试
+                        </a>
+                    </span>
+                <span class="tag-links">
+                        <i class="fa fa-tags">
+                        </i>
+                        <b>
+                            标签:
+                        </b>
+                        <a href="" rel="tag">
+                            撤烁
+                        </a>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h2 class="post-title">
+                <a href="https://github.com/yangyunhe369/h5-game-blockBreaker" title="">【转载】JS+CSS实现纯网页版弹球</a>
+            </h2>
+            <div class="meta-box">
+                    <span class="m-post-date">
+                        <i class="fa fa-calendar-o">
+                        </i>
+                        2020年9月2日
+                    </span>
+                <span class="comments-link">
+                        <a href="" class="ds-thread-count" data-thread-key="9500" title="fuck">
+                            <i class="fa fa-comments-o">
+                            </i>
+                            留言
+                        </a>
+                    </span>
+            </div>
+            <div class="post-content">
+                <p>
+                    rt，这是转载的文章，请多多支持原作者。源码下载链接已经推出。
+                    <br/>
+                    <a href="{% url 'blog:game1' %}">点击尝试</a>
+                </p>
+            </div>
+            <div class="meta-box">
+                    <span class="cat-links">
+                        <i class="fa fa-navicon">
+                        </i>
+                        <b>
+                            分类:
+                        </b>
+                        <a href="">
+                            测试
+                        </a>
+                    </span>
+                <span class="tag-links">
+                        <i class="fa fa-tags">
+                        </i>
+                        <b>
+                            标签:
+                        </b>
+                        <a href="" rel="tag">
+                            撤烁
+                        </a>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <!--推荐阅读-->
+    <div class="row">
+        <div class="col-md-12 post-container m-recommend-page">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="" class="thumbnail">
+                        <img src="/static/dog.jpg" alt="作品展示">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="" class="thumbnail">
+                        <img src="/static/dog.jpg" alt="路人简介">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="" class="thumbnail">
+                        <img src="/static/dog.jpg" alt="作品推荐">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="col-md-8 post-container">
+        <div class="copyright">
+            <a style="font-size:20px;">©2020 Saher</a> <a href="http://www.beian.miit.gov.cn/" style="font-size:20px;">桂ICP备20004216号</a>
+        </div>
+    </footer>
+</div>
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+        /*banner 初始化*/
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                effect: 'random', // 过渡效果
+                controlNav: false, // 是否显示图片导航控制按钮（,2,3... ）
+                pauseOnHover: true, // 鼠标县浮时是否停止动画
+                manualAdvance: false, // 是否手动切换
+                animSpeed: 100, // 图片过渡时间
+                pauseTime: 2000, // 图片显示时间
+                pauseOnHover: false,
+                manualAdvance: false,
+            });
+        });
+        $(document).ready(function() {
+            $('body').show();
+            $('.version').text(NProgress.version);
+            NProgress.start();
+            setTimeout(function() {
+                NProgress.done();
+                $('.fade').removeClass('out');
+            }, 1000);
+        })
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+     background-image:url(/static/gp.png);/*设置网页的背景图片*/
+     background-repeat:no-repeat;/*设置背景图像平铺*/
+     background-position:0px 0px;/*用像素值控制背景图像的位置*/
+     background-attachment:fixed;/*设置背景图像的位置固定*/
+
+}
+    </style>
+</head>
+<body>
+{{registAdd}}
+<br>
+================
+<br>
+{% if username %}
+注册失败{{ username }}已存在
+<a href="{% url 'blog:regist'  %}">注册</a>
+{% else %}
+注册成功！
+<a href="{% url 'blog:login'  %}">登陆</a>
+{% endif %}
+
+</body>
+</html>

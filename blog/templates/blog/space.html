@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人空间展示页面</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h3>
+                <div class="col-md-4">{{ profile.user }}的个人空间</div>
+            </h3>
+            {% if profile.avatar %}
+            <div class="col-md-4">头像</div>
+            <img src="/static{{ profile.avatar.url }}" style="max-width: 20%; border-radius: 15%;" class="col-md-4">
+            {% else %}
+            <h5 class="col-md-4">暂无头像</h5>
+            {% endif %}
+            <br>
+            <br>
+            <div class="form-group col-md-4">
+                <label>他的简介:</label>
+                <br/>
+                <a>{{ profile.bio }}</a>
+            </div>
+            <br/>
+            <div>
+                <a>他发表的文章：</a>
+                <br/>
+                {% for article in articles %}
+                <ul>
+                    <li>
+                        <a href="{% url 'blog:article_page' article.id %}"
+                           style="color:rgb(5, 5, 5);font: size 20px;">{{ article.title }}</a>
+                        <br/>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+            <a href="{% url 'index' %}">返回主页</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

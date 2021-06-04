@@ -1,0 +1,30 @@
+ERROR 2020-07-13 21:19:37,146 log 19760 10348 Internal Server Error: /blog/article/666
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\django≤‚ ‘\myfuck\blog\views.py", line 41, in article_page
+    article = models.Article.objects.get(pk=article_id)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 415, in get
+    raise self.model.DoesNotExist(
+blog.models.Article.DoesNotExist: Article matching query does not exist.
+ERROR 2020-07-13 20:46:31,488 log 9640 14292 Internal Server Error: /blog/article/2399
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\django≤‚ ‘\myfuck\blog\views.py", line 41, in article_page
+    article = models.Article.objects.get(pk=article_id)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 415, in get
+    raise self.model.DoesNotExist(
+blog.models.Article.DoesNotExist: Article matching query does not exist.

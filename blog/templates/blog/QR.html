@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="cn" dir="ltr" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>多功能在线二维码生成器</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+    <link href="/static/css/nprogress.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/nivo-slider.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/static/css/default.css" type="text/css" media="screen"/>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.nivo.slider.pack.js"></script>
+    <script src="/static/js/nprogress.js"></script>
+    <!---------------------------------以下是看板娘----------------->
+    <!--Live-2D看板娘模型-->
+    <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+    <!--Live-2D看板娘模型-->
+    <script type="text/javascript">
+    //Live
+            opacityOnHover: 0.5-2D看板娘模型
+    L2Dwidget.init({
+        model: {
+            //jsonpath控制显示那个小萝莉模型，下面这个就是我觉得最可爱的小萝莉模型 //hijiki  //izumi //shizuku //koharu
+            jsonPath: "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json", //这里改模型，前面后面都要改
+            scale: 1,
+        },
+        display: {
+            position: "right", //设置看板娘的上下左右位置
+            width: 120,  //小萝莉的宽度
+            height: 200, //小萝莉的高度
+            hOffset: 1250,  //水平偏移
+            vOffset: -40  //垂直偏移
+        },
+        mobile: {
+            show: false,  //在移动端不显示
+            scale: 0.4    //移动设备上的缩放
+        },
+        react: {
+            opacityDefault: 0.9, //设置透明度
+        },
+    });
+
+    </script>
+
+    <!---------------------------------以上是看板娘----------------->
+    <style type="text/css">
+        body {
+            background-image: url(/static/bf1.jpg);
+            /*设置网页的背景图片*/
+            background-repeat: no-repeat;
+            /*设置背景图像平铺*/
+            background-position: -110px -100px;
+            /*用像素值控制背景图像的位置*/
+            background-attachment: fixed;
+            /*设置背景图像的位置固定*/
+        }
+
+
+
+
+
+    </style>
+    <script type="text/javascript"> function c(){
+                var obj = document.getElementById("txt");
+                var v = obj.value;
+                window.location="http://118.31.175.222/tools/qrcode/"+v;
+            }
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+
+
+
+    </script>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">
+                        Toggle navigation
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav header-menu">
+                <li>
+                    <a href="{% url 'index'  %}">
+                        首页
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:regist'  %}">
+                        注册
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:Tools' %}">
+                        实用小程序
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:video' %}">
+                        奇怪的地方
+                    </a>
+                </li>
+                <li>
+                    {% if user.is_authenticated %}
+                    <div class='login_btn fl' style="color:rgb(5, 5, 5);font-size:35px;">
+                        欢迎您：<em style="color:rgb(5, 5, 5);font-size:35px;">{{ user.username }}</em>
+                        <span>|</span>
+                        <a href="{% url 'blog:logout' %}">退出</a>
+                    </div>
+                    {% else %}
+                    <div class='login_btn fl'>
+                        <a href="{% url 'blog:login' %}">登录</a>
+                        <span>|</span>
+                        <a href="{% url 'blog:regist' %}">注册</a>
+                    </div>
+                    {% endif %}
+                </li>
+            </ul>
+            <br/>
+            <a>总访问量:{{ views }}</a>
+        </div>
+    </div>
+</nav>
+<div class="leftbar">
+    <!-- 左菜单 -->
+    <div class="left_menu">
+        <ul class="menu_link">
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-toggle="tooltip"
+                   data-placement="right" title="登陆">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li data-toggle="tooltip" data-placement="right" title="博客">
+                <a href="{% url 'blog:regist'  %}" class="simptip-position-right simptip-smooth simptip-movable"
+                   target="_black">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            注册
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable" data-tooltip="自定义链接">
+                    <img src="/static/tx1.jpg">
+                    <span>
+                            自定义链接
+                        </span>
+                    <div class="clearfix">
+                    </div>
+
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid main-container" id="main-container">
+    <div class="row top-title">
+        <div class="col-md-12">
+            <h1 class="page-title">
+
+            </h1>
+        </div>
+    </div>
+    <!--main Start-->
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h1 class="post-title">
+                <a title="">多功能在线二维码生成器</a>
+            </h1>
+            <br/>
+            <div class="meta-box">
+                    <span class="m-post-date" style="font-size:20px;">
+                        请输入要转换为二维码的内容：
+
+                         <input type="text" id="txt"/>
+        <button onclick="c()">转换</button>
+                    </span>
+                <span class="comments-link">
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 post-container">
+            <h3 class="post-title">
+                <a title="">使用说明</a>
+            </h3>
+            <br/>
+            <a>你可以输入任何想转换为二维码的文本，包括网站、文章、数字等等。下面是一些使用示例：</a>
+            <br/>
+            <img src="/static/QR1.jpg"/>
+            <br/>
+            <a>输入你想要转换为二维码的文本，如图中的网站网址，然后点击转换按钮</a>
+            <br/>
+            <img src="/static/QR2.jpg"/>
+            <br/>
+            <a>然后等待一小会回跳转至二维码图片页面，PC端可以右键图片另存为，手机端可以按住屏幕保存</a>
+            <br/>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="copyright">
+        <a style="font-size:20px;">©2020 Saher</a> <a href="http://www.beian.miit.gov.cn/" style="font-size:20px;">桂ICP备20004216号</a>
+    </div>
+</footer>
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+        /*banner 初始化*/
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                effect: 'random', // 过渡效果
+                controlNav: false, // 是否显示图片导航控制按钮（,2,3... ）
+                pauseOnHover: true, // 鼠标县浮时是否停止动画
+                manualAdvance: false, // 是否手动切换
+                animSpeed: 100, // 图片过渡时间
+                pauseTime: 2000, // 图片显示时间
+                pauseOnHover: false,
+                manualAdvance: false,
+            });
+        });
+        $(document).ready(function() {
+            $('body').show();
+            $('.version').text(NProgress.version);
+            NProgress.start();
+            setTimeout(function() {
+                NProgress.done();
+                $('.fade').removeClass('out');
+            }, 1000);
+        })
+
+
+
+
+
+</script>
+
+</body>
+</html>

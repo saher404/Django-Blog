@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>拆腻子的博客 </title>
+    <style type="text/css">
+        .nav li{   background-color: red;   padding: 16px 30px;    float: left;   list-style: none;   color:#fff;  }
+         body{
+     background-image:url(/static/bf1.png);/*设置网页的背景图片*/
+     background-repeat:no-repeat;/*设置背景图像平铺*/
+     background-position:-110px -100px;/*用像素值控制背景图像的位置*/
+     background-attachment:fixed;/*设置背景图像的位置固定*/
+
+}
+
+    </style>
+</head>
+
+<body>
+<h2 align="center" style="color:white;font-size:50px;">欢迎来到拆腻子的乐色博客（demo 1）</h2>
+{% if user.is_authenticated %}
+<div class='login_btn fl' style="color:white;font-size:35px;">
+	欢迎您：<em style="color:white;font-size:50px;">{{ user.username }}</em>
+	<span>|</span>
+	<a href="{% url 'blog:logout' %}">退出</a>
+</div>
+{% else %}
+<div class='login_btn fl'>
+	<a href="{% url 'blog:login' %}">登录</a>
+	<span>|</span>
+	<a href="{% url 'blog:regist' %}">注册</a>
+</div>
+{% endif %}
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid" style="position:absolute;left:220px;top:120px">
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav header-menu">
+                <li>
+                    <a href="" style="color:white;font-size:35px;">
+                        首页
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:regist'  %}" style="color:white;font-size:35px;">
+                        注册
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="color:white;font-size:35px;">
+                        博客
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="color:white;font-size:35px;">
+                        作品
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="color:white;font-size:35px;">
+                        链接
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="color:white;font-size:35px;">
+                        联系
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="color:white;font-size:35px;">
+                        帮助
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br/>><br/><br/><br/>
+<img src="/static/dog.png" width="290" height="208"/>
+<br/>
+<div class="leftbar">
+    <!-- 左菜单 -->
+    <div class="left_menu">
+        <ul class="menu_link">
+            <li>
+                <a href="{% url 'blog:edit_page' 0 %}" class="simptip-position-right simptip-smooth simptip-movable"
+                   data-toggle="tooltip" data-placement="right" title="新文章" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                新文章
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li data-toggle="tooltip" data-placement="right" title="博客" >
+                <a href="{% url 'blog:login'  %}" class="simptip-position-right simptip-smooth simptip-movable"
+                   target="_black" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                登录
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog:vlogin' %}" class="simptip-position-right simptip-smooth simptip-movable" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                图片专区
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable"
+                   data-tooltip="自定义链接" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                自定义链接
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable"
+                   data-tooltip="自定义链接" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                自定义链接
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable"
+                   data-tooltip="自定义链接" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                自定义链接
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable"
+                   data-tooltip="自定义链接" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                自定义链接
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable"
+                   data-tooltip="自定义链接" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                自定义链接
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="" class="simptip-position-right simptip-smooth simptip-movable"
+                   data-tooltip="自定义链接" style="color:white;font-size:35px;">
+                    <img src="/static/tx1.jpg" width="60" height="60"/>
+                    <span>
+                自定义链接
+              </span>
+                    <div class="clearfix">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--主要内容 -->
+<div class="container-fluid main-container" id="main-container">
+    <div class="row top-title">
+        <div class="col-md-12">
+            <h1 class="page-title" style="color:white;font-size:50px;">
+                最新文章
+            </h1>
+            {% for article in articles %}
+            <a href="{% url 'blog:article_page' article.id %}" style="color:white;font-size:30px;">{{ article.title }}</a>
+            <br/>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<footer>
+</footer>
+</body>
+
+</html>

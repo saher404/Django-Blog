@@ -1,0 +1,79 @@
+
+.main{
+    padding: 0;
+}
+
+.top{
+    height: 45rem;
+    background: url('/static/astronomy-beautiful-clouds-355465.jpg') ;
+    background-repeat:repeat;
+    background-size:auto 100% ;
+    background-size: cover;
+    color: white;
+
+
+}
+.top h2{
+    margin-top:10rem; 
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 4.3rem;  letter-spacing: 0.7rem;
+}
+.top h3{
+    text-align: center;
+}
+
+.intro{
+    margin: 0.8rem;
+    text-align:center;
+    border-bottom: 2px solid #c2002d;
+}
+
+.intro_p{
+    font-size: 1.5rem;
+    letter-spacing: 1.7px;
+    text-align: center;
+    line-height:2.4rem;
+
+}
+
+
+.picitem{
+    width: 100%;
+}
+
+.bs-docs-footer {
+    padding-top: 25px;
+    padding-bottom: 50px;
+    margin-top: 20px;
+    height: 6rem;
+    color: #99979c;
+    text-align: center;
+    background-color: rgba(0,0,0,.8);
+}
+
+.bs-docs-footer-links {
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.bs-docs-footer-links li {
+    display: inline-block;
+}
+
+.bs-docs-footer a {
+    color: #fff;
+}
+
+.bs-docs-footer p {
+    margin-bottom: 0;
+}
+
+.testButton { 
+    color:rgb(197, 229, 145);
+    font-size:19px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:25px;
+    padding-right:25px;
+}

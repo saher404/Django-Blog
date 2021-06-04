@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            background-image: url(/static/tp2.png);
+            /*设置网页的背景图片*/
+            background-repeat: no-repeat;
+            /*设置背景图像平铺*/
+            background-position: 0px 0px;
+            /*用像素值控制背景图像的位置*/
+            background-attachment: fixed;
+            /*设置背景图像的位置固定*/
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <h3 style="color:white;font-size:35px">图片列表</h3>
+    <ul>
+        {% if latest_picture_list %}    {% for picture in latest_picture_list %}
+        <li><a href="{% url 'pic_upload:pic_detail' picture.id %}" style="color:white;font-size:35px">{{ picture.title }}</a>        - {{ picture.date| date:"Y-m-j" }}</li>
+        {% endfor %} {% else %}
+        <li>还没有上传新图片</li>
+        {% endif %}
+    </ul>
+    <p><a href="{% url 'pic_upload:pic_upload' %}" style="color:white;font-size:35px">上传新图片</a></p>
+    {% endblock %}
+    <a href="{% url 'index' %}">返回主页</a>
+</body>
+
+</html>
